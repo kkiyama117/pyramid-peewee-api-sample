@@ -11,10 +11,10 @@ class ViewTests(unittest.TestCase):
         testing.tearDown()
 
     def test_my_view(self):
-        from .views import my_view
+        from .views import home
         request = testing.DummyRequest()
-        info = my_view(request)
-        self.assertEqual(info['project'], 'backhp')
+        info = home(request)
+        self.assertEqual(info['project'], 'BackHP')
 
 
 class FunctionalTests(unittest.TestCase):
@@ -26,4 +26,4 @@ class FunctionalTests(unittest.TestCase):
 
     def test_root(self):
         res = self.testapp.get('/', status=200)
-        self.assertTrue(b'Pyramid' in res.body)
+        self.assertTrue(b'BackHP' in res.body)

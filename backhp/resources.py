@@ -1,14 +1,28 @@
 from peewee import *
+import pathlib
+from pyramid.request import Request
 
+
+def connect():
+    pass
+
+
+database_path = pathlib.Path().parent / 'main.sqlite'
 # SQLite database using WAL journal mode and 64MB cache.
-sqlite_db = SqliteDatabase('/path/to/app.db', pragmas={
+db = SqliteDatabase(database_path.absolute(), pragmas={
     'journal_mode': 'wal',
-    'cache_size': -1024 * 64})
+    'cache_size': -1 * 64000,  # 64MB
+    'foreign_keys': 1,
+    'ignore_check_constraints': 0,
+    'synchronous': 0})
 
-# Connect to a MySQL database on network.
-mysql_db = MySQLDatabase('my_app', user='app', password='db_password',
-                         host='10.1.0.8', port=3316)
 
-# Connect to a Postgres database.
-pg_db = PostgresqlDatabase('my_app', user='postgres', password='secret',
-                           host='10.1.0.9', port=5432)
+class MyRequest(Request):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        db.connect()
+        self.add_finished_callback(self.finish)
+
+    def finish(self, request):
+        if not db.is_closed():
+            db.close()

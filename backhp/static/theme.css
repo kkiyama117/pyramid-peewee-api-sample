@@ -1,43 +1,8 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
 
-body {
+* {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 300;
     color: #ffffff;
-    background: #42bc46;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-}
-
-p {
-    font-weight: 300;
-}
-
-.font-normal {
-    font-weight: 400;
-}
-
-.font-semi-bold {
-    font-weight: 600;
-}
-
-.font-bold {
-    font-weight: 700;
-}
-
-@media (max-width: 1199px) {
-}
-
-@media (max-width: 991px) {
-}
-
-@media (max-width: 767px) {
+    background: #3658bc;
 }

@@ -7,11 +7,16 @@ with open(os.path.join(here, 'README.md')) as f:
     README = f.read()
 
 requires = [
+    # pyramid
     'pyramid',
     'pyramid_jinja2',
     'pyramid_debugtoolbar',
     'waitress',
+    # database
+    'peewee',
+    # variables
     'python-decouple',
+    # production server
     'gunicorn',
 ]
 
@@ -22,7 +27,7 @@ tests_require = [
 ]
 
 setup(name='backhp',
-      version='0.0.1',
+      version='0.0.2',
       description='KUJinaja-sub back API server',
       long_description=README,
       classifiers=[

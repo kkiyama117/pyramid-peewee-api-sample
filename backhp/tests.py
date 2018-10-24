@@ -14,12 +14,12 @@ class ViewTests(unittest.TestCase):
         from .views import my_view
         request = testing.DummyRequest()
         info = my_view(request)
-        self.assertEqual(info['project'], 'bashhp')
+        self.assertEqual(info['project'], 'backhp')
 
 
 class FunctionalTests(unittest.TestCase):
     def setUp(self):
-        from bashhp import main
+        from backhp import main
         app = main({})
         from webtest import TestApp
         self.testapp = TestApp(app)

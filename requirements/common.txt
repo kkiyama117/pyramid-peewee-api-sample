@@ -1,5 +1,0 @@
-# web server
-pyramid
-
-# environment variables
-python-decouple

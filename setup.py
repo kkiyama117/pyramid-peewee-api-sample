@@ -3,7 +3,7 @@ import os
 from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(here, 'README.txt')) as f:
+with open(os.path.join(here, 'README.md')) as f:
     README = f.read()
 with open(os.path.join(here, 'CHANGES.txt')) as f:
     CHANGES = f.read()
@@ -13,17 +13,19 @@ requires = [
     'pyramid_jinja2',
     'pyramid_debugtoolbar',
     'waitress',
-    ]
+    'python-decouple',
+    'gunicorn',
+]
 
 tests_require = [
     'WebTest >= 1.3.1',  # py3 compat
     'pytest',  # includes virtualenv
     'pytest-cov',
-    ]
+]
 
-setup(name='bashhp',
+setup(name='backhp',
       version='0.0',
-      description='bashhp',
+      description='backhp',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
           "Programming Language :: Python",
@@ -44,6 +46,6 @@ setup(name='bashhp',
       install_requires=requires,
       entry_points="""\
       [paste.app_factory]
-      main = bashhp:main
+      main = backhp:main
       """,
       )
